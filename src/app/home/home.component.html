@@ -1,0 +1,31 @@
+<app-search-input (textChange)="onTextChange($event)"></app-search-input>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()" [scrollWindow]="false">
+
+  <div id="large-th">
+    <div class="container">
+      <h1> A list of books</h1>
+      <br>
+      <div class="choose">
+        <a href="#list-th"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+        <a href="#large-th"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+      </div>
+      <div id="list-th">
+        @for (book of items; track book.bookId){
+          <div class="book read">
+            <div class="cover">
+              <img src={{book.CoverBase64}}>
+            </div>
+            <div class="description">
+              <p class="title">{{book.BookDescription}}<br>
+                <span class="author">{{book.Author}}</span></p>
+            </div>
+          </div>
+        } @empty {
+          Empty list of books
+        }
+ 
+      </div>
+    </div>
+  </div>
+</div>
